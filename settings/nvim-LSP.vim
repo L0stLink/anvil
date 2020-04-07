@@ -4,41 +4,22 @@ if exists("g:nvim_LSP_configuration_loaded")
 endif
 let g:nvim_LSP_configuration_loaded = 1
 
-" use the defaults from the LS
+" See: https://neovim.io/doc/user/lsp.html
+
+" use the defaults from the nvim-LSP plugin
 lua << EOF
-  local nvim_lsp = require('nvim_lsp')
-  nvim_lsp.pyls.setup(nvim_lsp.pyls.template_config.default_config)
+    local nvim_lsp = require('nvim_lsp')
+    nvim_lsp.pyls.setup{}
+    nvim_lsp.solargraph.setup{}
 EOF
 
-let settings = {
-      \   "pyls" : {
-      \     "enable" : v:true,
-      \     "trace" : { "server" : "verbose", },
-      \     "commandPath" : "",
-      \     "configurationSources" : [ "pycodestyle" ],
-      \     "plugins" : {
-      \       "jedi_completion" : { "enabled" : v:true, },
-      \       "jedi_hover" : { "enabled" : v:true, },
-      \       "jedi_references" : { "enabled" : v:true, },
-      \       "jedi_signature_help" : { "enabled" : v:true, },
-      \       "jedi_symbols" : {
-      \         "enabled" : v:true,
-      \         "all_scopes" : v:true,
-      \       },
-      \       "mccabe" : {
-      \         "enabled" : v:true,
-      \         "threshold" : 15,
-      \       },
-      \       "preload" : { "enabled" : v:true, },
-      \       "pycodestyle" : { "enabled" : v:true, },
-      \       "pydocstyle" : {
-      \         "enabled" : v:false,
-      \         "match" : "(?!test_).*\\.py",
-      \         "matchDir" : "[^\\.].*",
-      \       },
-      \       "pyflakes" : { "enabled" : v:true, },
-      \       "rope_completion" : { "enabled" : v:true, },
-      \       "yapf" : { "enabled" : v:true, },
-      \     }}}
-call nvim_lsp#setup("pyls", settings)
-set omnifunc=lsp#omnifunc
+nnoremap <silent> <Space>j     <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <Space><S-d> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <Space>h     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <Space>i     <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <Space>k     <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <Space>i     <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> <Space>r     <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <Space>v     <cmd>lua vim.lsp.buf.document_symbol()<CR>
+
+set omnifunc=v:lua.vim.lsp.omnifunc

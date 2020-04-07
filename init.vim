@@ -10,10 +10,10 @@ colorscheme slate
 " Only load plugins when not runing as root
 if $USER != "root"
     call plug#begin('~/.config/nvim/plugins')
-    " Color theme
+    " Color themes
     Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'morhetz/gruvbox'
     Plug 'nightsense/cosmic_latte'
-    Plug 'protesilaos/tempus-themes-vim'
     " To asks for the right file to open in case wrong name is used.
     Plug 'EinfachToll/DidYouMean'
     " Visualise and control undo history in tree form.
@@ -24,7 +24,7 @@ if $USER != "root"
     Plug 'tpope/vim-fugitive'
     " Quick open/fuzzy find files (and more!) see plugin settings: fzf.vim.
     Plug 'junegunn/fzf.vim'
-    " A vim-native fuzzy finder/dispatcher
+    " A vim-native fuzzy finder/dispatcher, doesn't work as well as fzf
     Plug 'liuchengxu/vim-clap'
     " Nice highly configurable lightweight status line.
     Plug 'itchyny/lightline.vim'
@@ -33,12 +33,13 @@ if $USER != "root"
     " For REPL integration
     Plug 'rhysd/reply.vim', { 'on': ['Repl', 'ReplAuto', 'ReplSend'] }
     " For syntax support
+    Plug 'dag/vim-fish'
     Plug 'MaxMEllon/vim-jsx-pretty'
     Plug 'pangloss/vim-javascript'
 
 
     " Use language server via LanguageClient-neovim
-    Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+    " Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 
     " Use language server via vim-lsp
     " Plug 'prabirshrestha/async.vim'
@@ -48,7 +49,7 @@ if $USER != "root"
     Plug 'sourcegraph/javascript-typescript-langserver', {'do': 'yarn install; yarn build'}
 
     " Use language server via vim-lsc
-    " Plug 'natebosch/vim-lsc'
+    Plug 'natebosch/vim-lsc'
 
     " Configurations for builtin language server support
     " Plug 'neovim/nvim-lsp'
@@ -76,10 +77,10 @@ if $USER != "root"
     source ~/.config/nvim/settings/vim-jsx-pretty.vim
     source ~/.config/nvim/settings/vim-clap.vim
     source ~/.config/nvim/settings/fugitive.vim
-    " source ~/.config/nvim/settings/vim-lsc.vim
+    source ~/.config/nvim/settings/vim-lsc.vim
     " source ~/.config/nvim/settings/vim-lsp.vim
     " source ~/.config/nvim/settings/nvim-LSP.vim
-    source ~/.config/nvim/settings/LanguageClient-neovim.vim
+    " source ~/.config/nvim/settings/LanguageClient-neovim.vim
     " source ~/.config/nvim/settings/neosnippet.vim
     source ~/.config/nvim/settings/UltiSnips.vim
 endif
