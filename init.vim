@@ -1,18 +1,18 @@
 set nocompatible
 
-" Check if vim-plug is installed, if not then install it
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    silent !curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-endif
-
 colorscheme slate
 
 " Only load plugins when not runing as root
 if $USER != "root"
+    " Check if vim-plug is installed, if not then install it
+    if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+        silent !curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    endif
+
     call plug#begin('~/.config/nvim/plugins')
     " Color themes
     Plug 'dracula/vim', { 'as': 'dracula' }
-    Plug 'morhetz/gruvbox'
+    Plug 'sainnhe/gruvbox-material'
     Plug 'nightsense/cosmic_latte'
     " To asks for the right file to open in case wrong name is used.
     Plug 'EinfachToll/DidYouMean'
@@ -37,6 +37,13 @@ if $USER != "root"
     Plug 'MaxMEllon/vim-jsx-pretty'
     Plug 'pangloss/vim-javascript'
 
+    """ LSP Intigration
+
+    " Configurations for builtin language server support
+    " Plug 'neovim/nvim-lsp'
+
+    " JavaScript/TypeScript language server
+    Plug 'sourcegraph/javascript-typescript-langserver', {'do': 'yarn install; yarn build'}
 
     " Use language server via LanguageClient-neovim
     " Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
@@ -45,23 +52,23 @@ if $USER != "root"
     " Plug 'prabirshrestha/async.vim'
     " Plug 'prabirshrestha/vim-lsp'
 
-    " JavaScript/TypeScript language server
-    Plug 'sourcegraph/javascript-typescript-langserver', {'do': 'yarn install; yarn build'}
 
     " Use language server via vim-lsc
     Plug 'natebosch/vim-lsc'
 
-    " Configurations for builtin language server support
-    " Plug 'neovim/nvim-lsp'
+    " Use vim-vsnip as snippet provider
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
 
-    " Snippet support
+    """ Snippet support
     " Plug 'Shougo/neosnippet-snippets'
     " Plug 'Shougo/neosnippet.vim'
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
     call plug#end()
 
-    colorscheme dracula
+    let g:gruvbox_material_background = 'medium'
+    colorscheme gruvbox-material
     " Use github colorscheme if in diff mode
     if &diff
         colorscheme sol

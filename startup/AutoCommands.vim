@@ -1,4 +1,5 @@
-""" Auto commands
+""" Auto commands use sparingly, having auto commands that trigger often will
+""" slow down nvim
 if exists("g:custom_autocmds_loaded")
   finish
 endif
