@@ -1,5 +1,3 @@
-set nocompatible
-
 colorscheme slate
 
 " Only load plugins when not runing as root
@@ -25,7 +23,7 @@ if $USER != "root"
     " Quick open/fuzzy find files (and more!) see plugin settings: fzf.vim.
     Plug 'junegunn/fzf.vim'
     " A vim-native fuzzy finder/dispatcher, doesn't work as well as fzf
-    Plug 'liuchengxu/vim-clap'
+    " Plug 'liuchengxu/vim-clap'
     " Nice highly configurable lightweight status line.
     Plug 'itchyny/lightline.vim'
     " For when there is a need to visualy browse files inside of neovim.
@@ -82,7 +80,7 @@ if $USER != "root"
     source ~/.config/nvim/settings/NERDTree.vim
     source ~/.config/nvim/settings/reply.vim
     source ~/.config/nvim/settings/vim-jsx-pretty.vim
-    source ~/.config/nvim/settings/vim-clap.vim
+    " source ~/.config/nvim/settings/vim-clap.vim
     source ~/.config/nvim/settings/fugitive.vim
     source ~/.config/nvim/settings/vim-lsc.vim
     " source ~/.config/nvim/settings/vim-lsp.vim

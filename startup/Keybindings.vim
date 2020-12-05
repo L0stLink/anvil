@@ -35,6 +35,9 @@ nmap ,c         :q<CR>
 nmap ,q         :ccl<CR>
 " Close Location list
 nmap ,l         :lcl<CR>
+" Copy to & paste from system clipboard
+vmap ,y      "+y
+map  ,p      "+p
 
 " Fast * list navigation, inspired by tpope/vim-unimpaired
 " [ / ] -> previous / next, Uppercase Modifier -> First / Last
@@ -71,10 +74,6 @@ map  <F12>      :wa<CR>
 
 " Use ctrl+space for omnifunc
 imap <C-Space> <C-X><C-O>
-
-" Copy to & paste from system clipboard
-vmap <A-y>      "+y
-map  <A-p>      "+p
 
 " Bind Ctrl+/ for commenting/uncommenting
 map  <C-_>      gc
